@@ -5,7 +5,7 @@ require 'alien'
 require 'player'
 require 'boss'
 require 'wave'
-
+require 'alienattack'
 
 
 clicky = 0
