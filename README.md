@@ -1,6 +1,6 @@
 # SpaceInvadersLove2d
 
-This is a Space Invaders Love2d with Lua. There is 1 wave.
+This is a Space Invaders Love2d with Lua. There is 1 wave. Use arrow keys to move and space bar to fire.
 
 
 ## Tested OSes
