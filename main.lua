@@ -19,38 +19,9 @@ VIRTUAL_WIDTH = WINDOW_WIDTH
 VIRTUAL_HEIGHT = WINDOW_HEIGHT
 
 
-user = player(600,WINDOW_HEIGHT-50,0)
-boss1 = boss(600,400)
+user = player(700,WINDOW_HEIGHT-50,0)
 
-
-wave1bosses = {
-	boss(600,100)
-}
-wave1bosses = {
-	alien(200,200),
-	alien(300,200),
-	alien(400,200),
-	alien(500,200),
-	alien(600,200),
-	alien(700,200),
-	alien(800,200),
-	alien(900,200),
-	alien(1000,200),
-	alien(1100,200),
-
-	alien(200,300),
-	alien(300,300),
-	alien(400,300),
-	alien(500,300),
-	alien(600,300),
-	alien(700,300),
-	alien(800,300),
-	alien(900,300),
-	alien(1000,300),
-	alien(1100,300)
-}
-
-wave1 = wave("1",aliens,bosses)
+wave1 = wave(1)
 
 function love.load()
 	love.graphics.setDefaultFilter('nearest', 'nearest')
@@ -100,9 +71,12 @@ function love.draw()
 	love.graphics.clear(0.1, 0.11, 0.14, 1)
 
 
-	wave1:render()
+
 
 	user:render()
+
+	wave1:render()
+	wave1:check()
 	
 	displayFPS()
 	displayPoints()
