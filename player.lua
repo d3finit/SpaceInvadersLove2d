@@ -55,9 +55,21 @@ end
 
 
 
-function player:check(alienlaser)
-    if alienlaser.y-20 == self.y and alienlaser.x > self.x-40 and alienlaser.x < self.x+40 and self.hit == false then
-		self.hit = true
-		return true
-	end
+function player:check()
+
+
+    for count = 1, table.getn(wave1.aliensfireing) do
+        for count2 = 1, table.getn(wave1.aliensfireing[count].alienlasers) do
+            
+            if wave1.aliensfireing[count].alienlasers[count2].y == self.y+10 and wave1.aliensfireing[count].alienlasers[count2].x > self.x-40 and wave1.aliensfireing[count].alienlasers[count2].x < self.x+40 and self.hit == false then
+                self.hit = true
+                print("Hit")
+                return true
+            end
+
+        end
+    end
+
+
+
 end

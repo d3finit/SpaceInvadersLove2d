@@ -24,7 +24,7 @@ end
 function alienattack:render()
 	if self.hit == true then
 		return
-	else
+	elseif self.hit == false then
 		for count = 1, table.getn(self.alienlasers) do
 			self.alienlasers[count]:render()
 		end
@@ -34,10 +34,8 @@ function alienattack:render()
 		n2 = math.random (1, 100)
 
 		if n1 == n2 then
-			print("Fireing")
 			table.insert(self.alienlasers, alienlaser(self.x,self.y+30))
 		end
-
 
 	end
 

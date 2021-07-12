@@ -19,6 +19,9 @@ VIRTUAL_WIDTH = WINDOW_WIDTH
 VIRTUAL_HEIGHT = WINDOW_HEIGHT
 
 
+Background = love.graphics.newImage("sprites/Background.png")
+
+
 user = player(700,WINDOW_HEIGHT-50,0)
 
 wave1 = wave(1)
@@ -28,9 +31,9 @@ function love.load()
 
 	love.window.setTitle('Space Invaders') -- set window title
 
-	font = love.graphics.newFont('font.ttf', 30) -- configure fonts
-	FPSFont = love.graphics.newFont('font.ttf', 20)
-	PointsFont = love.graphics.newFont('font.ttf', 15)
+	font = love.graphics.newFont('Press-Start-2P.ttf', 30) -- configure fonts
+	FPSFont = love.graphics.newFont('Press-Start-2P.ttf', 20)
+	PointsFont = love.graphics.newFont('Press-Start-2P.ttf', 15)
 	love.graphics.setFont(font)
 
 	--set resolution
@@ -69,6 +72,10 @@ function love.draw()
 	love.graphics.setFont(font)
 
 	love.graphics.clear(0.1, 0.11, 0.14, 1)
+	
+	
+    love.graphics.draw(Background, 0, 0)
+
 
 
 
