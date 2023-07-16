@@ -28,8 +28,6 @@ clickpos = {
 	y = 0
 }
 
-
-state = "start" -- set game state WHY IS IT A STRING
 points = 0 -- score
 
 
