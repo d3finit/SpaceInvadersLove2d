@@ -15,9 +15,7 @@ function alienattack:init(x, y)
 	self.width = self.image:getWidth()
 	self.height = self.image:getHeight()
 	self.hit = false
-	self.alienlasers = {
-
-    }
+	self.alienlasers = { }
 end
 
 
@@ -41,8 +39,8 @@ function alienattack:render()
 
 end
 
-function alienattack:check(lazer)
-	if lazer.y-20 == self.y and lazer.x > self.x-40 and lazer.x < self.x+40 and self.hit == false then
+function alienattack:check(laser)
+	if laser.y-20 == self.y and laser.x > self.x-40 and laser.x < self.x+40 and self.hit == false then
 		self.hit = true
 		return true
 	end

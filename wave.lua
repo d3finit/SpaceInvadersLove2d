@@ -53,24 +53,24 @@ function wave:render()
     elseif gameover == false then
         for count = 1, table.getn(self.aliensfireing) do
             self.aliensfireing[count]:render()
-            for count2 = 1, table.getn(user.lazers) do
-                if self.aliensfireing[count]:check(user.lazers[count2]) == true then
+            for count2 = 1, table.getn(user.lasers) do
+                if self.aliensfireing[count]:check(user.lasers[count2]) == true then
                     points = points + 100
                     self.remaining = self.remaining - 1
                     print(self.remaining)
-                    user.lazers[count2].hit = true
+                    user.lasers[count2].hit = true
                 end
             end
         end
     
         for count = 1, table.getn(self.aliens) do
             self.aliens[count]:render()
-            for count2 = 1, table.getn(user.lazers) do
-                if self.aliens[count]:check(user.lazers[count2]) == true then
+            for count2 = 1, table.getn(user.lasers) do
+                if self.aliens[count]:check(user.lasers[count2]) == true then
                     points = points + 100
                     self.remaining = self.remaining - 1
                     print(self.remaining)
-                    user.lazers[count2].hit = true
+                    user.lasers[count2].hit = true
                 end
             end
         end
@@ -79,13 +79,13 @@ function wave:render()
       
         for count = 1, table.getn(self.bosses) do
             self.bosses[count]:render()
-            for count2 = 1, table.getn(user.lazers) do
-                if self.bosses[count]:check(user.lazers[count2]) == true then
+            for count2 = 1, table.getn(user.lasers) do
+                if self.bosses[count]:check(user.lasers[count2]) == true then
                     points = points + 1000
                     self.remaining = self.remaining - 1
-                    user.lazers[count2].hit = true
-                elseif self.bosses[count]:check(user.lazers[count2]) == "hitw/hp" then
-                    user.lazers[count2].hit = true
+                    user.lasers[count2].hit = true
+                elseif self.bosses[count]:check(user.lasers[count2]) == "hitw/hp" then
+                    user.lasers[count2].hit = true
                 end
             end
         end

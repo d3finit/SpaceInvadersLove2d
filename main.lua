@@ -1,31 +1,57 @@
+-- Dear programmer:
+-- When I wrote this code, only god and
+-- I knew how it worked.
+-- Now, only god knows it!
+-- Therefore, if you are trying to optimize
+-- this and you fail (most surely),
+-- please increase this counter as a
+-- warning for the next person:
+-- total hours wasted here = 0
+
+
+
+-- WHAT
 push = require "push"
 Class = require 'Class'
 
-require 'alien'
-require 'player'
-require 'boss'
-require 'wave'
-require 'alienattack'
+
+-- imports
+require 'alien' -- alien.lua
+require 'player' -- player.lua
+require 'boss' -- boss.lua
+require 'wave' -- wave.lua
+require 'alienattack' --alienattack.lua
+
+-- store click pos
+clickpos = {
+	x = 0,
+	y = 0
+}
 
 
-clicky = 0
-clickx = 0
+state = "start" -- set game state WHY IS IT A STRING
+points = 0 -- score
 
-state = "start"
-points = 0
+
+-- just the window info
 WINDOW_WIDTH = 1280
 WINDOW_HEIGHT = 720
 VIRTUAL_WIDTH = WINDOW_WIDTH
 VIRTUAL_HEIGHT = WINDOW_HEIGHT
 
 
+-- load bg
 Background = love.graphics.newImage("sprites/Background.png")
 
-
+-- init user class
 user = player(700,WINDOW_HEIGHT-50,0)
 
+
+-- init wave
 wave1 = wave(1)
 
+
+-- redef the love builtin for load?
 function love.load()
 	love.graphics.setDefaultFilter('nearest', 'nearest')
 
@@ -45,13 +71,17 @@ function love.load()
 
 end
 
+
+-- redef mouseeven listener?
 function love.mousepressed(x, y, button, istouch)
 	if button == 1 then -- Versions prior to 0.10.0 use the MouseConstant 'l'
-	   clickx = x
-	   clicky = y
+	   clickpos["x"] = x
+	   clickpos["y"] = y
 	end
  end
 
+
+-- redef keypress lietener?
 function love.keypressed(key)
 	-- print(key)
 	--access keys by string name
@@ -66,6 +96,8 @@ function love.keypressed(key)
 	end
 end
 
+
+-- redef draw?
 function love.draw()
 	push:apply('start')
 
@@ -91,9 +123,13 @@ function love.draw()
 	push:apply('end')
 end
 
+
+-- FPS renderer
 function displayFPS()
-	love.graphics.setFont(FPSFont)
-	love.graphics.setDefaultFilter('linear', 'linear')
+	love.graphics.setFont(FPSFont) -- set font
+	love.graphics.setDefaultFilter('linear', 'linear') -- the heck
+
+	-- decide color
 	if love.timer.getFPS() < 30 then
 		love.graphics.setColor(240, 252, 3, 1)
 	elseif love.timer.getFPS() < 60  and love.timer.getFPS() > 30 then
@@ -101,10 +137,12 @@ function displayFPS()
 	else
 		love.graphics.setColor(255, 0, 0, 1)
 	end
+
+	-- print it
 	love.graphics.print('FPS: ' .. tostring(love.timer.getFPS()), 20, WINDOW_HEIGHT - 50)
 end
 
-
+-- point renderer
 function displayPoints()
 	love.graphics.setFont(PointsFont)
 	love.graphics.setDefaultFilter('linear', 'linear')

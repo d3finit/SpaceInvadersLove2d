@@ -1,6 +1,6 @@
-lazer = Class{}
+laser = Class{}
 
-function lazer:init(x, y)
+function laser:init(x, y)
 	self.x = x
 	self.y = y
 	self.image = love.graphics.newImage("sprites/Laser.png")
@@ -10,7 +10,7 @@ function lazer:init(x, y)
 end
 
 
-function lazer:render()
+function laser:render()
 	if self.hit == false then
     	self.y = self.y - 10
 

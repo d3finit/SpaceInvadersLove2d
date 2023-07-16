@@ -1,7 +1,7 @@
 push = require "push"
 Class = require 'Class'
 
-require 'lazer'
+require 'laser'
 
 player = Class{}
 
@@ -14,7 +14,7 @@ function player:init(x, y, dx)
 	self.height = self.image:getHeight()
     self.hit = false
 
-    self.lazers = {
+    self.lasers = {
 
     }
 end
@@ -40,8 +40,8 @@ function player:render()
     
         end
     
-        for count = 1, table.getn(self.lazers) do
-            self.lazers[count]:render()
+        for count = 1, table.getn(self.lasers) do
+            self.lasers[count]:render()
         end
     end
 end
@@ -49,7 +49,7 @@ end
 
 function player:fire()
     if self.hit == false then
-        table.insert(self.lazers, lazer(self.x,self.y-30))
+        table.insert(self.lasers, laser(self.x,self.y-30))
     end
 end
 
