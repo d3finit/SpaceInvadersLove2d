@@ -6,11 +6,10 @@
 -- this and you fail (most surely),
 -- please increase this counter as a
 -- warning for the next person:
--- total hours wasted here = 0
+-- total time wasted here = 1 hour
 
 
 
--- WHAT
 push = require "push"
 Class = require 'Class'
 
@@ -74,9 +73,18 @@ function love.keypressed(key)
 	if key == 'escape' then
 		love.event.quit()
 	elseif key == 'left' then
-		user.dx = user.dx -5
+		if user.x < 120 then
+			user.dx = 0
+		else
+			user.dx = user.dx -5
+		end
+		
 	elseif key == 'right' then
-		user.dx =  user.dx + 5
+		if user.x > 1230 then
+			user.dx = 0
+		else
+			user.dx = user.dx + 5
+		end
 	elseif key == 'space' then
 		user:fire()
 	end

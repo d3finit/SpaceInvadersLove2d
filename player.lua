@@ -21,23 +21,23 @@ end
 
 
 function player:render()
-
-
     if self.hit == true then
         gameover = true
         self.x = 625
         self.y = WINDOW_HEIGHT-50
         love.graphics.draw(self.image, self.x, self.y, 0, 1, 1, self.width, self.height)
+
     elseif self.hit == false then
-        
         self.x = self.x + self.dx
         love.graphics.draw(self.image, self.x, self.y, 0, 1, 1, self.width, self.height)
         if self.x < 100 then
-            self.dx = 5
+            self.dx = 0
+            self.x = 100
     
         elseif self.x > 1250 then
-            self.dx = -5
-    
+            self.dx = 0
+            self.x = 1250
+            
         end
     
         for count = 1, table.getn(self.lasers) do
@@ -56,20 +56,13 @@ end
 
 
 function player:check()
-
-
     for count = 1, table.getn(wave1.aliensfireing) do
         for count2 = 1, table.getn(wave1.aliensfireing[count].alienlasers) do
-            
             if wave1.aliensfireing[count].alienlasers[count2].y == self.y+10 and wave1.aliensfireing[count].alienlasers[count2].x > self.x-40 and wave1.aliensfireing[count].alienlasers[count2].x < self.x+40 and self.hit == false then
                 self.hit = true
-                print("Hit")
                 return true
             end
 
         end
     end
-
-
-
 end
