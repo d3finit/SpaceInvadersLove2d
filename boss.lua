@@ -19,18 +19,19 @@ function boss:render()
 	else
 		love.graphics.draw(self.image, self.x, self.y, 0, 1, 1, self.width, self.height)
 
-		love.graphics.printf('Boss: '..self.hp,0,15,1280,'center') 
+		love.graphics.printf('Boss: '..math.floor(self.hp),0,15,1280,'center') 
 	end
+	self.hp = self.hp + 0.1
 
 end
 
 function boss:check(lazer)
 	if lazer.y-60 == self.y and lazer.x > self.x-60 and lazer.x < self.x+60 and self.hit == false and self.hp ~= 0 and lazer.hit == false then
-		self.hp = self.hp - 50
+		self.hp = self.hp - 10
 		return "hitw/hp"
 	end
 
-	if self.hp == 0 and self.hit == false then
+	if self.hp <= 0 and self.hit == false then
 		self.hit = true
 		return true
 	end
