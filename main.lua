@@ -55,16 +55,15 @@ function love.load()
 
 	love.window.setTitle('Space Invaders') -- set window title
 
-	font = love.graphics.newFont('Press-Start-2P.ttf', 30) -- configure fonts
-	FPSFont = love.graphics.newFont('Press-Start-2P.ttf', 20)
+	-- font = love.graphics.newFont('Press-Start-2P.ttf', 30) -- configure fonts
 	PointsFont = love.graphics.newFont('Press-Start-2P.ttf', 15)
-	love.graphics.setFont(font)
+	love.graphics.setFont(love.graphics.newFont('Press-Start-2P.ttf', 30))
 
 	--set resolution
 	push:setupScreen(VIRTUAL_WIDTH, VIRTUAL_HEIGHT, WINDOW_WIDTH, WINDOW_HEIGHT, {
 		fullscreen = false,
 		resizable = false,
-		vsync = true
+		vsync = false -- ew vsync never
 	})
 
 end
@@ -99,7 +98,7 @@ end
 function love.draw()
 	push:apply('start')
 
-	love.graphics.setFont(font)
+	love.graphics.setFont(love.graphics.newFont('Press-Start-2P.ttf', 30))
 
 	love.graphics.clear(0.1, 0.11, 0.14, 1)
 	
@@ -124,7 +123,7 @@ end
 
 -- FPS renderer
 function displayFPS()
-	love.graphics.setFont(FPSFont) -- set font
+	love.graphics.setFont(love.graphics.newFont('Press-Start-2P.ttf', 20)) -- set font
 	love.graphics.setDefaultFilter('linear', 'linear') -- the heck
 
 	-- decide color

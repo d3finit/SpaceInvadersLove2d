@@ -95,7 +95,7 @@ end
 function wave:check()
     if self.remaining == 0 then
 
-	love.graphics.setFont(font)
+	love.graphics.setFont(love.graphics.newFont('Press-Start-2P.ttf', 30))
 	love.graphics.printf('You Win!',0,15,1280,'center') 
     else
         return
