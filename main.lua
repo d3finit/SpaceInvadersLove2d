@@ -48,16 +48,10 @@ user = player(700,WINDOW_HEIGHT-50,0)
 -- init wave
 wave1 = wave(1)
 
-
--- redef the love builtin for load?
 function love.load()
 	love.graphics.setDefaultFilter('nearest', 'nearest')
 
 	love.window.setTitle('Space Invaders') -- set window title
-
-	-- font = love.graphics.newFont('Press-Start-2P.ttf', 30) -- configure fonts
-	PointsFont = love.graphics.newFont('Press-Start-2P.ttf', 15)
-	love.graphics.setFont(love.graphics.newFont('Press-Start-2P.ttf', 30))
 
 	--set resolution
 	push:setupScreen(VIRTUAL_WIDTH, VIRTUAL_HEIGHT, WINDOW_WIDTH, WINDOW_HEIGHT, {
@@ -68,8 +62,6 @@ function love.load()
 
 end
 
-
--- redef mouseeven listener?
 function love.mousepressed(x, y, button, istouch)
 	if button == 1 then -- Versions prior to 0.10.0 use the MouseConstant 'l'
 	   clickpos["x"] = x
@@ -78,10 +70,7 @@ function love.mousepressed(x, y, button, istouch)
  end
 
 
--- redef keypress lietener?
 function love.keypressed(key)
-	-- print(key)
-	--access keys by string name
 	if key == 'escape' then
 		love.event.quit()
 	elseif key == 'left' then
@@ -104,10 +93,6 @@ function love.draw()
 	
 	
     love.graphics.draw(Background, 0, 0)
-
-
-
-
 
 	user:render()
 
@@ -141,7 +126,7 @@ end
 
 -- point renderer
 function displayPoints()
-	love.graphics.setFont(PointsFont)
+	love.graphics.setFont(love.graphics.newFont('Press-Start-2P.ttf', 15))
 	love.graphics.setDefaultFilter('linear', 'linear')
 	love.graphics.setColor(1,1,1, 1)	
 	love.graphics.print(tostring(points), 20, 20)
